@@ -1,3 +1,21 @@
-<mat-toolbar color="accent">
-    <span>My Application</span>
+<mat-toolbar color="primary" class="app-toolbar">
+    <mat-toolbar-row class="mat-elevation-z6">
+      <span>Recipe</span>
+
+      <button mat-button *ngIf="isAuthenticated" [style.marginLeft]="'auto'" routerLinkActive="active" routerLink="/auth" (click)="logout()" >Logout</button>
+      
+    </mat-toolbar-row>
+
+    <mat-toolbar-row *ngIf="isAuthenticated" >
+        <button mat-button routerLinkActive="active" routerLink="/recipes" >Recipes</button>
+        <button mat-button routerLinkActive="active" routerLink="/shopping-list">Shopping List</button>
+
+        <button mat-button [matMenuTriggerFor]="menu">Manage</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onSaveData()">Save Data</button>
+            <button mat-menu-item (click)="onFetchData()">Fetch Data</button>
+        </mat-menu>
+    </mat-toolbar-row>
+
+  
   </mat-toolbar>

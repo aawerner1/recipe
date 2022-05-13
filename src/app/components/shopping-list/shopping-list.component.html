@@ -1,3 +1,14 @@
-<p>
-  shopping-list works!
-</p>
+
+<app-shopping-edit></app-shopping-edit>
+
+<hr>
+<h1>Shopping List</h1>
+
+<mat-selection-list #ingredient [multiple]="false">
+    <mat-list-option 
+        (click)="onEditItem(i)"
+        *ngFor="let ingredient of ingredients; let i = index; trackBy: trackByFuncion" 
+        [value]="ingredient">
+        {{ingredient.name}} {{ingredient.amount}}
+    </mat-list-option>
+</mat-selection-list>

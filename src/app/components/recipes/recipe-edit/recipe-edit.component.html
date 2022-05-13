@@ -1,0 +1,47 @@
+
+<form  class="form-container" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+	<h1>Edit Recipe</h1>
+    <mat-form-field appearance="outline">
+		<mat-label>Name</mat-label>
+		<input formControlName="name" matInput>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>imagePath</mat-label>
+		<input formControlName="imagePath" matInput>
+	</mat-form-field>
+
+	<mat-form-field   appearance="outline">
+		<mat-label>Description</mat-label>
+		<textarea formControlName="description" matInput></textarea>
+	</mat-form-field>
+
+	<mat-divider></mat-divider>
+
+	<button [style.margin]="'16px 0'" mat-stroked-button type="button" color="primary" (click)="onAddIngredient()">Add Ingredient</button>
+
+	<div formArrayName="ingredients">
+		<div class="list" [formGroupName]="i" *ngFor="let ingredientCtrl of ingredientsCtrl; let i = index">
+
+			<mat-form-field appearance="outline">
+				<mat-label>Name</mat-label>
+				<input matInput formControlName="name">
+			</mat-form-field>
+	
+			<mat-form-field [style.margin]="'0 8px'" appearance="outline">
+				<mat-label>Amount</mat-label>
+				<input matInput formControlName="amount">
+			</mat-form-field>
+	
+			<button mat-stroked-button (click)="onDeleteIngredient(i)" type="button" color="warn">Delete</button>
+		</div>
+	</div>
+
+ 
+    <div class="actions">
+		<button mat-stroked-button type="button" color="warn" (click)="onCancel()">Cancel</button>
+		<button mat-stroked-button type="button" color="warn" *ngIf="editMode" (click)="onDeleteRecipe()">Delete</button>
+		<button mat-stroked-button type="button" >Clear</button>
+		<button [disabled]="!recipeForm.valid" mat-stroked-button type="submit" color="primary">{{editMode ? 'Update' : 'Add'}}</button>
+	</div>
+</form>

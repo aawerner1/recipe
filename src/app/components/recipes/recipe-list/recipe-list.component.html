@@ -1,3 +1,13 @@
-<p>
-  recipe-list works!
-</p>
+
+<button mat-flat-button color="primary" routerLink="new">New Recipe</button>
+
+
+<div class="list-group" >
+    <app-recipe-item 
+        [routerLink]="'' + i"
+        routerLinkActive="active"
+        *ngFor="let recipe of recipes; let i = index" 
+        [recipe]="recipe">
+    </app-recipe-item>
+</div>
+

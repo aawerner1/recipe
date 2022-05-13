@@ -1,0 +1,30 @@
+.form-container {
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(63, 81, 181, .1);
+    border-radius: 10px;
+    height: 100%;
+
+    > *  { 
+        width: 100%;
+    }
+
+    .list {
+        display: flex;
+        align-items: baseline;
+
+        button {
+            padding: 8px;
+            top: -4px;
+        }
+    }
+
+    .actions { 
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            margin: 0 4px;
+        }
+    }
+}

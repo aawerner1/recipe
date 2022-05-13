@@ -1,3 +1,30 @@
-<p>
-  shopping-edit works!
-</p>
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <mat-form-field  appearance="outline" >
+      <mat-label>Name</mat-label>
+      <input 
+        matInput 
+        name="name" 
+        type="text" 
+        placeholder="Ex. Pizza" 
+        required 
+        ngModel>
+    </mat-form-field>
+  
+    <mat-form-field  appearance="outline" [style.margin]="'0 8px'">
+      <mat-label>Amount</mat-label>
+      <input 
+        matInput 
+        type="number" 
+        required 
+        ngModel 
+        name="amount" 
+        pattern="^[1-9]+[0-9]*$">
+    </mat-form-field>
+  
+  <div>
+    
+    <button [style.margin]="'0 4px'" mat-stroked-button type="submit" [disabled]="!form.valid" color="primary">{{editMode ? 'Update' : 'Add'}}</button>
+    <button [style.margin]="'0 4px'" *ngIf="editMode" mat-stroked-button type="button" color="warn" (click)="onDelete()">Delete</button>
+    <button [style.margin]="'0 4px'" mat-stroked-button type="button" (click)="onClear()">Clear</button>
+  </div>
+</form>

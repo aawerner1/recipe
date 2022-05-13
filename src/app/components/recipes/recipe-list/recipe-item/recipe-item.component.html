@@ -1,3 +1,10 @@
-<p>
-  recipe-item works!
-</p>
+<mat-card class="card" matRipple >
+	
+	<img [src]="recipe?.imagePath" [alt]="recipe?.name">
+	<mat-card-header class="card-header">
+		<mat-card-title>{{recipe.name}}</mat-card-title>
+		<mat-card-subtitle>{{recipe.description | truncate:[45, '...']}}</mat-card-subtitle>
+	</mat-card-header>
+
+</mat-card> 
+

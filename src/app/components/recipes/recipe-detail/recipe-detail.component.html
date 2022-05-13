@@ -1,3 +1,21 @@
-<p>
-  recipe-detail works!
-</p>
+<div class="container" *ngIf="recipe">
+	<h1>{{ recipe?.name }}</h1>
+	<p>{{ recipe?.description }}</p>
+	<button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Manage Recipe</button>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item (click)="onAddToShoppingList()">To Shopping List</button>
+		<button mat-menu-item [routerLink]="'edit'">Edit Recipe</button>
+		<button mat-menu-item>Delete Recipe</button>
+	</mat-menu>
+
+	<h3 class="subtitle">Ingredients</h3>
+
+	<small class="text-secondary">Item Name (amount)</small>
+	<mat-list class="list" *ngFor="let ingredient of recipe.ingredients">
+		<mat-list-item class="list-item">
+			{{ingredient.name}} ({{ingredient.amount}})
+		</mat-list-item>
+		<hr>
+	  </mat-list>
+	 
+</div>

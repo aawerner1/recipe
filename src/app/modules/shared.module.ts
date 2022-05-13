@@ -5,7 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';  
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
@@ -31,11 +31,16 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { ReactiveFormsModule } from '@angular/forms';
-import {MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
+import { TruncatePipePipe } from '../pipes/truncate-pipe.pipe';
 
 
 @NgModule({
+  declarations: [
+    PageNotFoundComponent,
+    TruncatePipePipe
+  ],
   imports: [
     MatCheckboxModule,
     MatCheckboxModule,
@@ -71,7 +76,6 @@ import {MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     MatNativeDateModule,
   ],
   exports: [
-    ReactiveFormsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -104,10 +108,11 @@ import {MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     MatSortModule,
     MatPaginatorModule,
     MatNativeDateModule,
+    TruncatePipePipe
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
   ]
 })
-export class AngularMaterialModule {
+export class SharedModule {
 }
